@@ -6,7 +6,7 @@ namespace PizzaDeliveryBot
 {
     class SimplePathFinder : IPathFinder
     {
-        private IField _field;
+        protected IField _field;
 
         public IField Field
         {
@@ -23,7 +23,7 @@ namespace PizzaDeliveryBot
         {
             Field = _field;
         }
-        public string CalculatePath()
+        public virtual string CalculatePath()
         {
             StringBuilder path = new StringBuilder();
             (int x, int y) startPoint = (0, 0);
@@ -35,7 +35,7 @@ namespace PizzaDeliveryBot
             return path.ToString();
         }
 
-        private void WriteNextPathPart((int x, int y) firstPoint, (int x, int y) lastPoint, StringBuilder path)
+        protected void WriteNextPathPart((int x, int y) firstPoint, (int x, int y) lastPoint, StringBuilder path)
         {
             if (lastPoint.x - firstPoint.x > 0)
                 path.Append('E', lastPoint.x - firstPoint.x);
