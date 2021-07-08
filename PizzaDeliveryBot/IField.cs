@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace PizzaDeliveryBot
@@ -9,6 +10,6 @@ namespace PizzaDeliveryBot
         int FieldWidth { get; }
         int FieldHeight { get; }
 
-        List<Point> PointsToVisit { get; }
+        ReadOnlyCollection<Point> PointsToVisit { get; }
     }
 }

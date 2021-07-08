@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace PizzaDeliveryBot
 {
     public class Field : IField
     {
+        private List<Point> _pointsToVisit;
         public int FieldWidth { get; }
         public int FieldHeight { get; }
 
-        public List<Point> PointsToVisit { get; }
+        public ReadOnlyCollection<Point> PointsToVisit 
+        { 
+            get => new ReadOnlyCollection<Point>(_pointsToVisit);
+        }
 
         public Field(int width, int height, List<Point> pointsToVisit)
         {
@@ -26,7 +31,7 @@ namespace PizzaDeliveryBot
 
             FieldWidth = width;
             FieldHeight = height;
-            PointsToVisit = new List<Point>(pointsToVisit);
+            _pointsToVisit = new List<Point>(pointsToVisit);
         }
     }
 }
