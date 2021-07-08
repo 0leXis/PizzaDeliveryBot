@@ -4,14 +4,14 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    class Field : IField
+    public class Field : IField
     {
         public int FieldWidth { get; }
         public int FieldHeight { get; }
 
-        public List<(int x, int y)> PointsToVisit { get; }
+        public List<Point> PointsToVisit { get; }
 
-        public Field(int width, int height, List<(int x, int y)> pointsToVisit)
+        public Field(int width, int height, List<Point> pointsToVisit)
         {
             if (width < 0)
                 throw new ArgumentException("width can't be negative");
@@ -22,7 +22,7 @@ namespace PizzaDeliveryBot
 
             FieldWidth = width;
             FieldHeight = height;
-            PointsToVisit = new List<(int x, int y)>(pointsToVisit);
+            PointsToVisit = new List<Point>(pointsToVisit);
         }
     }
 }

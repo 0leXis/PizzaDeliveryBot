@@ -4,23 +4,24 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    class OptimalPathFinder : SimplePathFinder
+    public class OptimalPathFinder : SimplePathFinder
     {
         public OptimalPathFinder(IField _field) : base(_field) { }
 
         public override string CalculatePath()
         {
             StringBuilder path = new StringBuilder();
-            (int x, int y) startPoint = (0, 0);
-            var pointsToVisit = new List<(int x, int y)>(_field.PointsToVisit);
+            Point startPoint = new Point(0, 0);
+            var pointsToVisit = new List<Point>(_field.PointsToVisit);
 
             while (pointsToVisit.Count > 0)
             {
                 int minDistance = int.MaxValue;
-                (int x, int y) deliveryPoint = pointsToVisit[0];
+                Point deliveryPoint = pointsToVisit[0];
+                //Finding nearest cell
                 foreach (var point in pointsToVisit)
                 {
-                    int currentDistance = Math.Abs(startPoint.x - point.x) + Math.Abs(startPoint.y - point.y);
+                    int currentDistance = Math.Abs(startPoint.X - point.X) + Math.Abs(startPoint.Y - point.Y);
                     if (currentDistance < minDistance)
                     {
                         deliveryPoint = point;

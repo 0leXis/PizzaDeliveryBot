@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    interface IPizzaDeliveryBot
+    public interface IPizzaDeliveryBot
     {
         void DeliverPizza();
     }

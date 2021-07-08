@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    class ConsolePizzaDeliveryBot : IPizzaDeliveryBot
+    public class ConsolePizzaDeliveryBot : IPizzaDeliveryBot
     {
         private IPathFinder _pathFinder;
 

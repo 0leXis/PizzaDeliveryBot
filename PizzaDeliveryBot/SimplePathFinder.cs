@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    class SimplePathFinder : IPathFinder
+    public class SimplePathFinder : IPathFinder
     {
         protected IField _field;
 
@@ -14,7 +14,7 @@ namespace PizzaDeliveryBot
             set
             {
                 if (value == null)
-                    throw new ArgumentException("PathFinder can't be null");
+                    throw new ArgumentException("Field can't be null");
                 _field = value;
             }
         }
@@ -26,7 +26,7 @@ namespace PizzaDeliveryBot
         public virtual string CalculatePath()
         {
             StringBuilder path = new StringBuilder();
-            (int x, int y) startPoint = (0, 0);
+            Point startPoint = new Point(0, 0);
             foreach (var deliveryPoint in _field.PointsToVisit)
             {
                 WriteNextPathPart(startPoint, deliveryPoint, path);
@@ -35,18 +35,19 @@ namespace PizzaDeliveryBot
             return path.ToString();
         }
 
-        protected void WriteNextPathPart((int x, int y) firstPoint, (int x, int y) lastPoint, StringBuilder path)
+        protected void WriteNextPathPart(Point firstPoint, Point lastPoint, StringBuilder path)
         {
-            if (lastPoint.x - firstPoint.x > 0)
-                path.Append('E', lastPoint.x - firstPoint.x);
+            // Right/Left
+            if (lastPoint.X - firstPoint.X > 0)
+                path.Append('E', lastPoint.X - firstPoint.X);
             else
-                path.Append('W', firstPoint.x - lastPoint.x);
-
-            if (lastPoint.y - firstPoint.y > 0)
-                path.Append('N', lastPoint.y - firstPoint.y);
+                path.Append('W', firstPoint.X - lastPoint.X);
+            // Up/Down
+            if (lastPoint.Y - firstPoint.Y > 0)
+                path.Append('N', lastPoint.Y - firstPoint.Y);
             else
-                path.Append('S', firstPoint.y - lastPoint.y);
-
+                path.Append('S', firstPoint.Y - lastPoint.Y);
+            //Drop
             path.Append('D');
         }
     }

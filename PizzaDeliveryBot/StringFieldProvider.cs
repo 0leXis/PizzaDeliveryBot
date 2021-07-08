@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace PizzaDeliveryBot
 {
-    class StringFieldProvider : IFieldProvider
+    public class StringFieldProvider : IFieldProvider
     {
         public string InputString { get; set; }
 
@@ -25,10 +25,11 @@ namespace PizzaDeliveryBot
             int height = int.Parse(match.Groups[2].Value);
 
             Regex pointPattern = new Regex(@"\(([0-9]+), ([0-9]+)\)");
+            // List of x and y components of all points
             var pointsInput = pointPattern.Split(match.Groups[3].Value).Where(x => x != " " && x != "").ToList();
-            List<(int x, int y)> points = new List<(int x, int y)>();
+            List<Point> points = new List<Point>();
             for(int i = 0; i < pointsInput.Count; i += 2)
-                points.Add((int.Parse(pointsInput[i]), int.Parse(pointsInput[i + 1])));
+                points.Add(new Point(int.Parse(pointsInput[i]), int.Parse(pointsInput[i + 1])));
 
             return new Field(width, height, points);
         }

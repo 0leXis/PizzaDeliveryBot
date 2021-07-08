@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PizzaDeliveryBot
 {
-    interface IPathFinder
+    public interface IPathFinder
     {
         string CalculatePath();
     }
