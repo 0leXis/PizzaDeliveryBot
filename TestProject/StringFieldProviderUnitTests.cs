@@ -22,7 +22,7 @@ namespace UnitTests
                 new Point(4, 4),
                 new Point(4, 2)
             };
-            StringFieldProvider provider = new StringFieldProvider("5x6 (0, 0)(1, 3)(4, 4)(4, 2)");
+            StringFieldProvider provider = new StringFieldProvider("5x6 (0, 0) (1, 3) (4, 4) (4, 2)");
             IField field = provider.GetField();
 
             Assert.AreEqual(5, field.FieldWidth);

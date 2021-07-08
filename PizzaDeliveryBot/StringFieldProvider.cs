@@ -16,7 +16,7 @@ namespace PizzaDeliveryBot
 
         public IField GetField()
         {
-            Regex inputPattern = new Regex(@"([0-9]+)x([0-9]+)(( \([0-9]+, [0-9]+\))+)");
+            Regex inputPattern = new Regex(@"([0-9]+)x([0-9]+)(( \([0-9]+, [0-9]+\))*)");
             Match match = inputPattern.Match(InputString);
             if (!match.Success || match.Length != InputString.Length)
                 throw new ArgumentException("Wrong string format");
