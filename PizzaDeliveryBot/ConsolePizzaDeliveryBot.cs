@@ -25,7 +25,11 @@ namespace PizzaDeliveryBot
         }
         public void DeliverPizza()
         {
-            Console.WriteLine(PathFinder.CalculatePath());
+            string path = PathFinder.CalculatePath();
+            if (path == "")
+                Console.WriteLine("No delivery points");
+            else
+                Console.WriteLine(PathFinder.CalculatePath());
         }
     }
 }
